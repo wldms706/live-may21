@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>슬라이드 목차 — 5월 21일 무료라이브</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+            background: #0a0a0a;
+            color: #fff;
+            line-height: 1.5;
+            min-height: 100vh;
+            padding: 30px 20px 60px;
+            letter-spacing: -0.01em;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        header {
+            border-bottom: 1px solid rgba(255,255,255,0.15);
+            padding-bottom: 18px;
+            margin-bottom: 25px;
+            position: sticky;
+            top: 0;
+            background: #0a0a0a;
+            padding-top: 10px;
+            z-index: 100;
+        }
+        h1 {
+            font-size: 1.4rem;
+            font-weight: 900;
+            letter-spacing: -0.02em;
+        }
+        header p {
+            font-size: 0.85rem;
+            color: #888;
+            margin-top: 5px;
+            letter-spacing: 1.5px;
+        }
+        .part-section {
+            margin-top: 28px;
+        }
+        .part-header {
+            font-size: 0.7rem;
+            letter-spacing: 3px;
+            color: #888;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            padding-left: 8px;
+            border-left: 3px solid #fff;
+        }
+        .slide-item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 11px 14px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 3px;
+            margin-bottom: 5px;
+            transition: all 0.15s;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+        }
+        .slide-item:hover, .slide-item:active {
+            background: rgba(255,255,255,0.1);
+            border-color: rgba(255,255,255,0.4);
+        }
+        .slide-num {
+            font-size: 0.8rem;
+            color: #666;
+            font-weight: 800;
+            min-width: 32px;
+            font-variant-numeric: tabular-nums;
+        }
+        .slide-text {
+            flex: 1;
+            min-width: 0;
+        }
+        .slide-tag {
+            font-size: 0.62rem;
+            color: #888;
+            letter-spacing: 1.5px;
+            margin-bottom: 2px;
+        }
+        .slide-title {
+            font-size: 0.95rem;
+            color: #fff;
+            font-weight: 600;
+        }
+        /* PART 컬러 인디케이터 */
+        .slide-item.part-1 .slide-num { color: #fff; }
+        .slide-item.part-2 .slide-num { color: #b0b0b0; }
+        .slide-item.part-3 .slide-num { color: #c0c0c0; }
+        .slide-item.part-4 .slide-num { color: #d0d0d0; }
+        .slide-item.part-5 .slide-num { color: #e0e0e0; }
+        .slide-item.part-6 .slide-num { color: #fff; font-weight: 900; }
+
+        .loading {
+            text-align: center;
+            padding: 60px;
+            color: #888;
+        }
+
+        footer {
+            margin-top: 40px;
+            padding: 20px;
+            text-align: center;
+            font-size: 0.8rem;
+            color: #666;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        footer a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 8px;
+        }
+        footer a:hover { text-decoration: underline; }
+
+        @media (max-width: 600px) {
+            body { padding: 20px 14px 50px; }
+            h1 { font-size: 1.2rem; }
+            .slide-title { font-size: 0.9rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📋 슬라이드 목차</h1>
+            <p>5월 21일 무료라이브 · 광고가 아니라 구조다</p>
+        </header>
+
+        <div id="outline" class="loading">불러오는 중...</div>
+
+        <footer>
+            <a href="presentation.html">📺 슬라이드 보기</a>
+            <a href="#" onclick="location.reload(); return false;">🔄 새로고침</a>
+        </footer>
+    </div>
+
+    <script>
+        async function loadOutline() {
+            try {
+                const res = await fetch('presentation.html');
+                const html = await res.text();
+                const doc = new DOMParser().parseFromString(html, 'text/html');
+                const slides = doc.querySelectorAll('.slide');
+
+                const groups = {};
+                slides.forEach((slide, idx) => {
+                    const tag = slide.querySelector('.part-tag')?.textContent.trim() || '기타';
+                    const titleEl = slide.querySelector('.section-title, .title');
+                    const title = titleEl ? titleEl.textContent.replace(/\s+/g, ' ').trim() : '(제목 없음)';
+
+                    // PART 번호 추출
+                    const partMatch = tag.match(/PART\s*(\d)/);
+                    const partNum = partMatch ? partMatch[1] : '0';
+
+                    if (!groups[tag]) groups[tag] = [];
+                    groups[tag].push({ idx: idx + 1, title, partNum });
+                });
+
+                const outline = document.getElementById('outline');
+                outline.innerHTML = '';
+                outline.classList.remove('loading');
+
+                // PART별로 그룹화하여 표시
+                const partGroups = {};
+                slides.forEach((slide, idx) => {
+                    const tag = slide.querySelector('.part-tag')?.textContent.trim() || '기타';
+                    const titleEl = slide.querySelector('.section-title, .title');
+                    const title = titleEl ? titleEl.textContent.replace(/\s+/g, ' ').trim() : '(제목 없음)';
+                    const partMatch = tag.match(/PART\s*(\d)/);
+                    const partNum = partMatch ? partMatch[1] : '0';
+                    const partKey = `PART ${partNum}`;
+
+                    if (!partGroups[partKey]) partGroups[partKey] = [];
+                    partGroups[partKey].push({ idx: idx + 1, tag, title, partNum });
+                });
+
+                Object.entries(partGroups).forEach(([partKey, items]) => {
+                    const section = document.createElement('div');
+                    section.className = 'part-section';
+                    section.innerHTML = `<div class="part-header">${partKey === 'PART 0' ? 'INTRO' : partKey}</div>`;
+
+                    items.forEach(item => {
+                        const a = document.createElement('a');
+                        a.className = `slide-item part-${item.partNum}`;
+                        a.href = `presentation.html#slide-${item.idx}`;
+                        a.target = '_blank';
+                        a.innerHTML = `
+                            <div class="slide-num">${item.idx}</div>
+                            <div class="slide-text">
+                                <div class="slide-tag">${item.tag}</div>
+                                <div class="slide-title">${item.title}</div>
+                            </div>
+                        `;
+                        section.appendChild(a);
+                    });
+                    outline.appendChild(section);
+                });
+            } catch (err) {
+                document.getElementById('outline').innerHTML = '<div style="color:#ff6b6b; text-align:center; padding:40px;">불러오기 실패: ' + err.message + '</div>';
+            }
+        }
+        loadOutline();
+    </script>
+</body>
+</html>
