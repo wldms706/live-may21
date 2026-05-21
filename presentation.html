@@ -945,6 +945,9 @@
 <body>
     <div class="progress" id="progress">슬라이드 1 / 38</div>
 
+    <!-- 사이드바 토글 버튼 (좌상단) -->
+    <button id="sb-toggle-btn" onclick="toggleSidebar()" style="position:fixed; top:20px; left:20px; z-index:1001; background:rgba(0,0,0,0.7); border:1px solid rgba(255,255,255,0.3); color:#fff; padding:8px 14px; border-radius:3px; font-size:0.8rem; cursor:pointer; letter-spacing:1.5px; font-family:inherit;">📋 미리보기</button>
+
     <!-- Presenter Sidebar (좌측 미리보기) -->
     <aside class="sidebar" id="sidebar">
         <div class="sb-header">
@@ -3170,14 +3173,14 @@
         }
 
         document.addEventListener('keydown', (e) => {
-            // 사이드바 (Presenter View) 토글
-            if (e.key === 's' || e.key === 'S') {
+            // 사이드바 (Presenter View) 토글 - 한글 입력 모드도 인식
+            if (e.code === 'KeyS' || e.key === 's' || e.key === 'S' || e.key === 'ㄴ') {
                 e.preventDefault();
                 toggleSidebar();
                 return;
             }
             // 목차 토글
-            if (e.key === 'i' || e.key === 'I') {
+            if (e.code === 'KeyI' || e.key === 'i' || e.key === 'I' || e.key === 'ㅑ') {
                 e.preventDefault();
                 toggleOutline();
                 return;
