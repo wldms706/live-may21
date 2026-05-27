@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>jjeen eazy - 정지은 프로필 카드</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body {
+            width: 1080px;
+            height: 1080px;
+            overflow: hidden;
+            font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+            background: #f5f1eb;
+            letter-spacing: -0.01em;
+        }
+        .card {
+            width: 1080px;
+            height: 1080px;
+            background: #f5f1eb;
+            color: #1a1a1a;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 80px 60px;
+            text-align: center;
+            position: relative;
+        }
+        .photo-circle {
+            width: 480px;
+            height: 480px;
+            border-radius: 50%;
+            background: #ddd url('img/jieun.jpeg') center 20%/cover;
+            border: 7px solid #2c5282;
+            margin-bottom: 50px;
+            box-shadow: 0 20px 60px rgba(44,82,130,0.18);
+        }
+        .brand-row {
+            font-size: 1.4rem;
+            letter-spacing: 10px;
+            color: #2c5282;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+            font-weight: 700;
+        }
+        h2 {
+            font-size: 4rem;
+            font-weight: 900;
+            line-height: 1.15;
+            letter-spacing: -0.03em;
+            color: #1a1a1a;
+        }
+        h2 .accent {
+            color: #2c5282;
+        }
+        .role {
+            display: inline-block;
+            margin-top: 38px;
+            padding: 13px 32px;
+            background: #2c5282;
+            color: #fff;
+            font-size: 1.3rem;
+            letter-spacing: 4px;
+            font-weight: 700;
+            border-radius: 4px;
+        }
+        .desc {
+            font-size: 1.4rem;
+            color: #555;
+            line-height: 1.7;
+            margin-top: 28px;
+            font-weight: 500;
+        }
+        .desc strong {
+            color: #1a1a1a;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="photo-circle"></div>
+        <div class="brand-row">jjeen eazy</div>
+        <h2>찐이지, <span class="accent">뭐 하는 곳일까?</span></h2>
+        <div class="role">혼자가 아닌 길 · 정지은</div>
+        <p class="desc">
+            前 정감브로우 대표 · <strong>AI 풀스택 빌더</strong><br>
+            인생을 잘 살게 해주는 <strong>실행메이킹</strong> 운영
+        </p>
+    </div>
+</body>
+</html>
