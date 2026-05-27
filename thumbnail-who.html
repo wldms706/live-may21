@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Who is 정지은 - jjeen eazy 썸네일</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #1a1a1a;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+            font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+            gap: 30px;
+        }
+        h1 {
+            color: #fff;
+            font-size: 1rem;
+            font-weight: 400;
+            letter-spacing: 2px;
+            color: #888;
+        }
+        .caption {
+            color: #888;
+            font-size: 0.85rem;
+            max-width: 600px;
+            text-align: center;
+            line-height: 1.6;
+        }
+
+        /* 인스타 1:1 카드뉴스 사이즈 */
+        .insta-card {
+            width: 540px;
+            height: 540px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 4px;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+            background: #0a0a0a;
+        }
+
+        /* ============================================
+           디자인 A: 사진 좌측 + 텍스트 우측 (분할)
+           ============================================ */
+        .design-a {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            background: linear-gradient(135deg, #1a1610 0%, #2a2218 100%);
+        }
+        .design-a .photo {
+            background: #2a2a2a url('https://source.unsplash.com/600x600/?korean,woman,portrait,professional&sig=22') center/cover;
+            position: relative;
+        }
+        .design-a .photo::after {
+            content: "사진 자리";
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+        }
+        .design-a .text {
+            padding: 40px 28px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            color: #fff;
+        }
+        .design-a .brand-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.7rem;
+            letter-spacing: 3px;
+            color: #d4af37;
+            text-transform: uppercase;
+        }
+        .design-a .brand-row::before {
+            content: "";
+            width: 24px;
+            height: 1px;
+            background: #d4af37;
+        }
+        .design-a h2 {
+            font-size: 2.1rem;
+            font-weight: 900;
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+            margin: 0;
+        }
+        .design-a .role {
+            font-size: 0.85rem;
+            color: #d4af37;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-top: 10px;
+        }
+        .design-a .desc {
+            font-size: 0.78rem;
+            color: #ccc;
+            line-height: 1.7;
+            margin-top: 8px;
+        }
+        .design-a .handle {
+            font-size: 0.7rem;
+            color: #888;
+            letter-spacing: 2px;
+        }
+
+        /* ============================================
+           디자인 B: 사진 배경 풀스크린 + 하단 텍스트
+           ============================================ */
+        .design-b {
+            background: #0a0a0a;
+            position: relative;
+        }
+        .design-b .photo-bg {
+            position: absolute;
+            inset: 0;
+            background: #2a2a2a url('https://source.unsplash.com/600x600/?korean,woman,portrait,professional&sig=22') center/cover;
+        }
+        .design-b .photo-bg::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.95) 80%);
+        }
+        .design-b .photo-label {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: rgba(0,0,0,0.6);
+            color: #fff;
+            padding: 4px 10px;
+            font-size: 0.6rem;
+            letter-spacing: 2px;
+            border-radius: 2px;
+            z-index: 5;
+        }
+        .design-b .text {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 32px 32px 36px;
+            color: #fff;
+            z-index: 4;
+        }
+        .design-b .brand-row {
+            font-size: 0.7rem;
+            letter-spacing: 4px;
+            color: #d4af37;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+        .design-b h2 {
+            font-size: 2.6rem;
+            font-weight: 900;
+            line-height: 1.05;
+            letter-spacing: -0.03em;
+        }
+        .design-b .role {
+            font-size: 0.9rem;
+            color: #d4af37;
+            font-weight: 700;
+            margin-top: 14px;
+            letter-spacing: 1px;
+        }
+        .design-b .desc {
+            font-size: 0.78rem;
+            color: #ddd;
+            line-height: 1.7;
+            margin-top: 6px;
+            max-width: 80%;
+        }
+
+        /* ============================================
+           디자인 C: 미니멀 - 원형 사진 + 중앙 텍스트
+           ============================================ */
+        .design-c {
+            background: #f5f1eb;
+            color: #1a1a1a;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+            text-align: center;
+        }
+        .design-c .photo-circle {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: #ddd url('https://source.unsplash.com/300x300/?korean,woman,portrait,smile&sig=22') center/cover;
+            border: 3px solid #d4af37;
+            margin-bottom: 22px;
+            position: relative;
+        }
+        .design-c .brand-row {
+            font-size: 0.7rem;
+            letter-spacing: 4px;
+            color: #888;
+            text-transform: uppercase;
+            margin-bottom: 6px;
+        }
+        .design-c h2 {
+            font-size: 2.3rem;
+            font-weight: 900;
+            line-height: 1.05;
+            letter-spacing: -0.03em;
+        }
+        .design-c .role {
+            display: inline-block;
+            margin-top: 14px;
+            padding: 5px 14px;
+            background: #1a1a1a;
+            color: #d4af37;
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            font-weight: 700;
+            border-radius: 2px;
+        }
+        .design-c .desc {
+            font-size: 0.8rem;
+            color: #666;
+            line-height: 1.7;
+            margin-top: 14px;
+            max-width: 80%;
+        }
+
+        @media (max-width: 600px) {
+            .insta-card { width: 90vw; height: 90vw; }
+        }
+    </style>
+</head>
+<body>
+    <h1>WHO IS 정지은 — 인스타 고정피드 ① 시안 3종</h1>
+    <p class="caption">마음에 드는 디자인 골라서 캡쳐 후 인스타에 업로드.<br>사진 자리는 본인 프로페셔널 샷으로 교체하세요.</p>
+
+    <!-- A: 사진 좌측 + 텍스트 우측 -->
+    <div class="insta-card design-a">
+        <div class="photo"></div>
+        <div class="text">
+            <div>
+                <div class="brand-row">jjeen eazy</div>
+                <h2 style="margin-top:18px;">Who is<br><span style="color:#d4af37;">정지은</span>?</h2>
+            </div>
+            <div>
+                <div class="role">뷰티샵 매출 멘토</div>
+                <p class="desc">정감브로우 대표<br>5,000+ 원장 분석 · 매출 6배 케이스</p>
+                <p class="handle" style="margin-top:14px;">@jjeen_eazy</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- B: 사진 풀스크린 -->
+    <div class="insta-card design-b">
+        <div class="photo-bg"></div>
+        <span class="photo-label">사진 자리</span>
+        <div class="text">
+            <div class="brand-row">jjeen eazy</div>
+            <h2>Who is<br><span style="color:#d4af37;">정지은</span>?</h2>
+            <div class="role">뷰티샵 매출 멘토</div>
+            <p class="desc">정감브로우 대표 · 5,000+ 원장 분석<br>수강생 매출 평균 3-6배</p>
+        </div>
+    </div>
+
+    <!-- C: 베이지 미니멀 -->
+    <div class="insta-card design-c">
+        <div class="photo-circle"></div>
+        <div class="brand-row">jjeen eazy</div>
+        <h2>Who is <span style="color:#888;">정지은</span>?</h2>
+        <div class="role">뷰티샵 매출 멘토</div>
+        <p class="desc">정감브로우 대표 · 5,000+ 원장 분석<br>실행메이킹으로 수강생 매출 3-6배</p>
+    </div>
+
+    <p class="caption" style="margin-top:20px;">
+        💡 캡쳐 방법: 카드 위에서 우클릭 → "이미지 캡쳐" 또는 스크린샷 (Shift+Cmd+4)<br>
+        💡 사진 교체: HTML 코드의 <code style="background:#000; padding:2px 6px; border-radius:2px;">background:url(...)</code> 부분을 본인 사진 경로로 변경
+    </p>
+</body>
+</html>
