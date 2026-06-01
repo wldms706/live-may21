@@ -2,84 +2,84 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>jjeen eazy - 고정 ② WHY</title>
+    <title>jjeen eazy - 고정 ③ 본인 스토리</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;500;700;900&family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html, body {
             width: 1080px;
             height: 1080px;
             overflow: hidden;
-            font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
-            background: #1a1a1a;
-            letter-spacing: -0.01em;
+            font-family: 'Noto Sans KR', sans-serif;
+            background: #0f0f0f;
+            letter-spacing: -0.02em;
         }
         .card {
             width: 1080px;
             height: 1080px;
-            background: #1a1a1a;
-            color: #f5f1eb;
+            background: linear-gradient(135deg, #1a1410 0%, #0a0a0a 100%);
+            color: #fff;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             padding: 90px 80px;
             position: relative;
         }
-        .brand-row {
-            font-size: 1.3rem;
-            letter-spacing: 10px;
-            color: #2c5282;
+        .label {
+            font-size: 1.1rem;
+            letter-spacing: 8px;
+            color: #d4a373;
             text-transform: uppercase;
             font-weight: 700;
         }
-        .marker {
-            font-size: 5rem;
-            color: #2c5282;
-            line-height: 1;
-            font-weight: 900;
-            font-family: Georgia, serif;
+        .quote-mark {
+            font-family: 'Noto Serif KR', serif;
+            font-size: 10rem;
+            color: #d4a373;
+            line-height: 0.3;
+            opacity: 0.6;
+            margin-top: 30px;
         }
         h2 {
-            font-size: 3.8rem;
-            font-weight: 900;
-            line-height: 1.2;
-            letter-spacing: -0.03em;
-            margin-top: 20px;
-        }
-        h2 .accent {
-            color: #5a7ba8;
-        }
-        .story-block {
-            display: flex;
-            flex-direction: column;
-            gap: 22px;
-            margin-top: 50px;
-        }
-        .story-line {
-            display: flex;
-            align-items: center;
-            gap: 18px;
-            font-size: 1.5rem;
-            color: #ccc;
-        }
-        .story-line .icon {
-            color: #2c5282;
-            font-size: 1.2rem;
-            font-weight: 900;
-            min-width: 22px;
-        }
-        .conclusion {
-            margin-top: 50px;
-            padding: 30px 35px;
-            background: #2c5282;
-            color: #fff;
-            border-radius: 4px;
-            font-size: 1.6rem;
+            font-family: 'Noto Serif KR', serif;
+            font-size: 3.6rem;
             font-weight: 700;
-            line-height: 1.5;
+            line-height: 1.35;
+            margin-top: 20px;
+            color: #fff;
+        }
+        h2 .accent { color: #d4a373; }
+        .body-text {
+            font-size: 1.4rem;
+            color: #aaa;
+            line-height: 1.85;
+            margin-top: 35px;
+            font-weight: 400;
+        }
+        .body-text strong {
+            color: #fff;
+            font-weight: 700;
+        }
+        .divider {
+            width: 60px;
+            height: 2px;
+            background: #d4a373;
+            margin: 35px 0;
+        }
+        .closing {
+            font-family: 'Noto Serif KR', serif;
+            font-size: 1.7rem;
+            line-height: 1.6;
+            font-weight: 500;
+            color: #fff;
+        }
+        .closing .accent {
+            color: #d4a373;
+            font-weight: 700;
         }
         .footer {
-            font-size: 1.1rem;
-            color: #888;
+            font-size: 0.95rem;
+            color: #555;
             letter-spacing: 3px;
             text-align: right;
         }
@@ -88,18 +88,23 @@
 <body>
     <div class="card">
         <div>
-            <div class="brand-row">jjeen eazy</div>
-            <div class="marker" style="margin-top: 28px;">"</div>
-            <h2>1년 전 저는,<br><span class="accent">막막했어요</span></h2>
-            <div class="story-block">
-                <div class="story-line"><span class="icon">━</span>매출은 안 오르고</div>
-                <div class="story-line"><span class="icon">━</span>광고만 돌렸고</div>
-                <div class="story-line"><span class="icon">━</span>혼자 다 하다 지쳤죠</div>
-                <div class="story-line"><span class="icon">━</span>그러다 깨달았어요</div>
-            </div>
-            <div class="conclusion">
-                "사장님은 혼자라서 그래요.<br>그래서 같이 가는 길을 만들었습니다."
-            </div>
+            <div class="label">JJEEN EAZY · 나의 이야기</div>
+            <div class="quote-mark">"</div>
+            <h2>잘되던 가게,<br><span class="accent">저는 접었습니다.</span></h2>
+
+            <p class="body-text">
+                매출도 올렸고, <strong>직원</strong>도 있었고,<br>
+                교육사업에 <strong>뉴질랜드 진출</strong>까지 해봤어요.<br>
+                <br>
+                근데 — <strong style="color:#d4a373;">자유롭지 않았어요.</strong>
+            </p>
+
+            <div class="divider"></div>
+
+            <p class="closing">
+                "저는 <span class="accent">좋은 시술자</span>였지만,<br>
+                <span class="accent">좋은 리더</span>는 아니었거든요."
+            </p>
         </div>
         <div class="footer">@jjeen_eazy · 정지은</div>
     </div>
