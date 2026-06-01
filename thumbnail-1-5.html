@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>jjeen eazy - 고정 ②</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body {
+            width: 1080px;
+            height: 1080px;
+            overflow: hidden;
+            font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+            background: #f5f1eb;
+            letter-spacing: -0.01em;
+        }
+        .card {
+            width: 1080px;
+            height: 1080px;
+            background: #f5f1eb;
+            color: #1a1a1a;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 75px 70px;
+        }
+        .top {
+            font-size: 1.2rem;
+            letter-spacing: 8px;
+            color: #2c5282;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+        h2 {
+            font-size: 2.7rem;
+            font-weight: 900;
+            line-height: 1.35;
+            letter-spacing: -0.03em;
+            margin-top: 38px;
+            color: #1a1a1a;
+        }
+        h2 .accent {
+            color: #2c5282;
+        }
+        .divider {
+            width: 80px;
+            height: 3px;
+            background: #2c5282;
+            margin: 38px 0 28px;
+        }
+        .quote-line {
+            font-size: 1.7rem;
+            font-weight: 800;
+            line-height: 1.4;
+            color: #1a1a1a;
+            font-style: italic;
+            position: relative;
+            padding-left: 22px;
+        }
+        .quote-line::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 8px;
+            bottom: 8px;
+            width: 4px;
+            background: #2c5282;
+        }
+        .quote-line .red {
+            color: #2c5282;
+            font-style: normal;
+        }
+        .problem {
+            font-size: 1.3rem;
+            color: #555;
+            line-height: 1.7;
+            margin-top: 28px;
+            font-weight: 500;
+        }
+        .solution {
+            background: #1a1a1a;
+            color: #fff;
+            padding: 30px 32px;
+            border-radius: 6px;
+            margin-top: 38px;
+        }
+        .solution .label {
+            font-size: 1rem;
+            letter-spacing: 4px;
+            color: #5a7ba8;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        .solution .text {
+            font-size: 1.5rem;
+            font-weight: 800;
+            line-height: 1.45;
+            letter-spacing: -0.02em;
+        }
+        .solution .text strong {
+            color: #5a7ba8;
+        }
+        .footer {
+            font-size: 1rem;
+            color: #888;
+            letter-spacing: 3px;
+            text-align: center;
+            margin-top: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div>
+            <div class="top">jjeen eazy · 저는요</div>
+            <h2>저는 <span class="accent">1인 뷰티샵 대표님</span>들이<br>잘 살길 바라는,<br><span class="accent">간절한 사람</span>입니다.</h2>
+
+            <div class="divider"></div>
+
+            <div class="quote-line">"돈만 많이 벌면 행복할거야"<br><span class="red">— 그건 착각이에요.</span></div>
+            <p class="problem">수많은 마케팅 업체에 돈을 써도, 결국 <strong>내가 손을 안 댈 수 없는 게</strong> 뷰티샵 대표잖아요.</p>
+
+            <div class="solution">
+                <div class="label">SO,</div>
+                <div class="text"><strong>3개월만</strong> 저와 함께 집중해서,<br><strong>혼자서도 잘 이끄는 뷰티샵</strong>을 만들어봐요.</div>
+            </div>
+        </div>
+        <div class="footer">@jjeen_eazy · 정지은</div>
+    </div>
+</body>
+</html>
